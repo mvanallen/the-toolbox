@@ -27,7 +27,8 @@ For brevity's sake, I only put a corresponding link into the source headers.
 descriptions
 ------------
 
-### NSSingletonObject
+
+### * NSSingletonObject
 
 ...is a singleton implementation as a direct subclass of NSObject, which means that you can turn any custom class that is derived from NSObject into a singleton simply by changing its superclass to NSSingletonObject.
 
@@ -47,3 +48,17 @@ for (int i = 0; i < 100000000; i++)
 ..have almost equal performance. Yes, I benchmarked it.
 
 (BTW, I know I shouldn't have used the 'NS'-prefix for it but it just looks so nice in the interface declaration.. :) )
+
+
+### * LinkWriter
+
+A category on NSURL that adds the possibility to save a URL to the filesystem as a clickable weblink ('.webloc' file).
+
+The correct fileextension will be set automatically, optionally you can also set a custom icon and show/hide the fileextension. 
+
+Example:
+```objective-c
+[[NSURL URLWithString:@"http://google.com/"] writeToFile:@"/Users/macleod/Desktop/TheGoogle"
+                                                withIcon:[NSImage imageNamed:@"Ramirez.png"]
+                                           hideExtension:YES ];
+```
